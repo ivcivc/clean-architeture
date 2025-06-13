@@ -1,0 +1,51 @@
+# Binários
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+main
+ordersystem
+
+# Arquivos de teste
+*.test
+
+# Arquivos de cobertura
+*.out
+
+# Dependências do Go
+vendor/
+
+# Arquivos de configuração local
+.env
+*.env.local
+
+# Logs
+*.log
+
+# Arquivos temporários
+*.tmp
+*.temp
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Docker
+.dockerignore
+.docker/
+*.pem
+
+# Arquivos de backup
+*.bak
+*~
+
+# Arquivos de teste temporários
+teste_*.sh
+*.md.bak

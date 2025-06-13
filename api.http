@@ -1,0 +1,131 @@
+# Arquivo de exemplo para testar a API REST de Orders
+
+# Criar uma nova order (POST /order)
+POST http://localhost:8080/order
+Content-Type: application/json
+
+{
+  "id": "12345",
+  "price": 100.0,
+  "tax": 10.0
+}
+
+# Listar todas as orders (GET /order)
+GET http://localhost:8080/order
+Content-Type: application/json
+
+### 📡 REST API Examples (Port 8080)
+
+### GET - List all orders
+GET http://localhost:8080/order
+Content-Type: application/json
+
+### POST - Create new order
+POST http://localhost:8080/order
+Content-Type: application/json
+
+{
+  "id": "rest-api-test-001",
+  "price": 299.99,
+  "tax": 29.99
+}
+
+### POST - Create another order
+POST http://localhost:8080/order
+Content-Type: application/json
+
+{
+  "id": "rest-api-test-002", 
+  "price": 150.50,
+  "tax": 15.05
+}
+
+###
+
+### 🎨 GraphQL Examples (Port 8081)
+
+### GraphQL - List Orders Query
+POST http://localhost:8081/query
+Content-Type: application/json
+
+{
+  "query": "{ listOrders { id price tax finalPrice } }"
+}
+
+### GraphQL - Create Order Mutation
+POST http://localhost:8081/query
+Content-Type: application/json
+
+{
+  "query": "mutation { createOrder(input: { id: \"graphql-test-001\", price: 500.0, tax: 50.0 }) { id price tax finalPrice } }"
+}
+
+### GraphQL - Create Order with Variables
+POST http://localhost:8081/query
+Content-Type: application/json
+
+{
+  "query": "mutation CreateOrder($input: OrderInput!) { createOrder(input: $input) { id price tax finalPrice } }",
+  "variables": {
+    "input": {
+      "id": "graphql-var-test-001",
+      "price": 750.0,
+      "tax": 75.0
+    }
+  }
+}
+
+### GraphQL - Complex Query with Formatting
+POST http://localhost:8081/query
+Content-Type: application/json
+
+{
+  "query": "query GetAllOrders { listOrders { id price tax finalPrice } }"
+}
+
+###
+
+### 🔍 Health Check Endpoints
+
+### Check REST API Health
+GET http://localhost:8080/order
+Accept: application/json
+
+### Check GraphQL Playground
+GET http://localhost:8081/
+Accept: text/html
+
+### Check RabbitMQ Management
+GET http://localhost:15672/
+Accept: text/html
+
+###
+
+### 📊 Database Direct Queries (for reference)
+# Connect to MySQL: docker exec -it mysql mysql -u root -proot orders
+# 
+# SELECT * FROM orders;
+# SELECT COUNT(*) as total_orders FROM orders;
+# SELECT * FROM orders WHERE price > 200;
+# SELECT id, final_price FROM orders ORDER BY final_price DESC;
+
+###
+
+### 🔌 gRPC Examples (use grpcurl command line)
+# 
+# List services:
+# ./grpcurl -plaintext localhost:50051 list
+#
+# List OrderService methods:
+# ./grpcurl -plaintext localhost:50051 list pb.OrderService
+#
+# List all orders:
+# ./grpcurl -plaintext localhost:50051 pb.OrderService.ListOrders
+#
+# Create new order:
+# ./grpcurl -plaintext -d '{"id": "grpc-test-001", "price": 400, "tax": 40}' localhost:50051 pb.OrderService.CreateOrder
+#
+# Create order with decimal values:
+# ./grpcurl -plaintext -d '{"id": "grpc-test-002", "price": 299.99, "tax": 29.99}' localhost:50051 pb.OrderService.CreateOrder
+
+### 
