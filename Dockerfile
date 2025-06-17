@@ -8,7 +8,9 @@ RUN go mod download
 
 COPY . .
 
-RUN go build -o main ./cmd/ordersystem
+RUN ls -laR
+
+RUN go build -o main .
 
 FROM alpine:latest
 
